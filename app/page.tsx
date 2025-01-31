@@ -26,7 +26,7 @@ export default function Home() {
       <div className="flex-1 flex justify-center items-center">
         <Link
           className="font-sans text-3xl bg-primary-yellow p-4 hover:opacity-80"
-          href="/consultation"
+          href="/genovian-pear/consultation"
         >
           Start consultation
         </Link>
