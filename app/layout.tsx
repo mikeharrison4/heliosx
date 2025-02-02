@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer/Footer";
 import type { Metadata } from "next";
 
 import "./globals.css";
+import ProviderLayer from "@/app/ProviderLayer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,7 +34,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header />
-        <main className="px-8 py-12">{children}</main>
+        <ProviderLayer>
+          <main className="px-8 py-12">{children}</main>
+        </ProviderLayer>
         <Footer />
       </body>
     </html>
