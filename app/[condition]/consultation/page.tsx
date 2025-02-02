@@ -1,7 +1,7 @@
 import React from "react";
 
 import { removeHyphens } from "@/utils/removeHyphens";
-import { Questions } from "./questions/QuestionsList";
+import { Questions } from "@/components/consultation/questions/QuestionList";
 
 type ConsultationProps = {
   params: {

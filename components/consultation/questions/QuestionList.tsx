@@ -9,7 +9,7 @@ import { Feedback } from "@/components/consultation/Feedback";
 
 import type { AnswerChoices as AnswerChoicesType, Answers } from "@/types";
 
-const questionsList = [
+const questionList = [
   {
     id: 1,
     question: "Are you male and aged between 18-65?",
@@ -62,17 +62,20 @@ export function Questions() {
   ) {
     setActiveQuestionIndexes((prev) => [...prev, questionIndex + 1]);
     setAnswers((prev) => [...prev, { question, answer }]);
-    if (activeQuestionIndexes.length === questionsList.length) {
+    if (activeQuestionIndexes.length === questionList.length) {
       submitAnswers();
     }
   }
 
   return (
     <div className="flex flex-col gap-y-8">
-      {questionsList
+      {questionList
         .filter(({ id }) => activeQuestionIndexes.includes(id))
         .map(({ id, question, points }, index) => (
-          <div key={id} className="flex justify-between items-center">
+          <div
+            key={id}
+            className="flex justify-between items-center [&:not(:first-child)]:animate-translate"
+          >
             <Question question={question} points={points} />
             <AnswerChoices
               onChange={handleOnAnswer}
@@ -80,7 +83,7 @@ export function Questions() {
               index={index}
               id={id}
               allQuestionsAnswered={
-                activeQuestionIndexes.length - 1 === questionsList.length
+                activeQuestionIndexes.length - 1 === questionList.length
               }
             />
           </div>

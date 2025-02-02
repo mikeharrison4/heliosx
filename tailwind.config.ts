@@ -17,6 +17,24 @@ export default {
         foreground: "var(--foreground)",
         "primary-yellow": "#fac828",
       },
+      keyframes: {
+        translate: {
+          "0%": {
+            transform: "translateY(-100%)",
+            opacity: "0",
+          },
+          "50%": {
+            opacity: "0",
+          },
+          "100%": {
+            transform: "translateY(0%)",
+            opacity: "1",
+          },
+        },
+      },
+      animation: {
+        translate: "translate .2s linear",
+      },
     },
   },
   plugins: [],
