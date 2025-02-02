@@ -74,7 +74,7 @@ export function Questions() {
         .map(({ id, question, points }, index) => (
           <div
             key={id}
-            className="flex justify-between items-center [&:not(:first-child)]:animate-translate"
+            className="flex justify-between flex-col md:flex-row md:items-center [&:not(:first-child)]:animate-translate"
           >
             <Question question={question} points={points} />
             <AnswerChoices

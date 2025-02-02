@@ -20,7 +20,7 @@ export function AnswerChoices({
   allQuestionsAnswered,
 }: AnswerChoicesProps) {
   return (
-    <div className="flex gap-x-6 pl-4">
+    <div className="flex gap-x-6 md:pl-4">
       {(["Yes", "No"] as Array<AnswerChoicesType>).map((value) => (
         <RadioButton
           disabled={allQuestionsAnswered}

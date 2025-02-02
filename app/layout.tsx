@@ -35,7 +35,7 @@ export default function RootLayout({
       >
         <Header />
         <ProviderLayer>
-          <main className="px-8 py-12">{children}</main>
+          <main className="px-4 md:px-8 py-12">{children}</main>
         </ProviderLayer>
         <Footer />
       </body>

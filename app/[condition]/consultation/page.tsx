@@ -13,7 +13,7 @@ function Consultation({ params }: ConsultationProps) {
   const { condition } = params;
 
   return (
-    <div className="w-8/12 mx-auto">
+    <div className="md:w-8/12 mx-auto">
       <h1 className="text-2xl pb-8">
         Consultation for
         <span className="font-bold first-letter:capitalize">
