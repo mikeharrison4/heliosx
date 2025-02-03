@@ -2,7 +2,7 @@ import React from "react";
 
 import { RadioButton } from "@/components/consultation/RadioButton";
 
-import type { AnswerChoices as AnswerChoicesType } from "@/types";
+import type { AnswerChoices as AnswerChoicesType } from "@/components/consultation/questions/types";
 
 type AnswerChoicesProps = {
   onChange: (index: number, question: string, value: AnswerChoicesType) => void;
@@ -28,7 +28,7 @@ export function AnswerChoices({
           id={`${id}`}
           name={`${id}-radio-buttons`}
           value={value}
-          onChange={() => onChange(index + 1, question, value)}
+          onChange={() => onChange(index, question, value)}
         />
       ))}
     </div>

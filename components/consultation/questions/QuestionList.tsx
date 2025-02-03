@@ -7,7 +7,10 @@ import { Question } from "./Question";
 import { AnswerChoices } from "./AnswerChoices";
 import { Feedback } from "@/components/consultation/Feedback";
 
-import type { AnswerChoices as AnswerChoicesType, Answers } from "@/types";
+import type {
+  AnswerChoices as AnswerChoicesType,
+  Answers,
+} from "@/components/consultation/questions/types";
 
 const questionList = [
   {
@@ -47,7 +50,7 @@ const questionList = [
 ];
 
 export function Questions() {
-  const [activeQuestionIndexes, setActiveQuestionIndexes] = useState([1]);
+  const [amountOfQuestionsToShow, setAmountOfQuestionsToShow] = useState(1);
   const [answers, setAnswers] = useState<Array<Answers>>([]);
 
   const { submitAnswers, isSuccess, isError, isPending } =
@@ -56,13 +59,15 @@ export function Questions() {
     });
 
   function handleOnAnswer(
-    questionIndex: number,
+    index: number,
     question: string,
     answer: AnswerChoicesType,
   ) {
-    setActiveQuestionIndexes((prev) => [...prev, questionIndex + 1]);
+    if (index + 1 === amountOfQuestionsToShow) {
+      setAmountOfQuestionsToShow((prev) => prev + 1);
+    }
     setAnswers((prev) => [...prev, { question, answer }]);
-    if (activeQuestionIndexes.length === questionList.length) {
+    if (amountOfQuestionsToShow === questionList.length) {
       submitAnswers();
     }
   }
@@ -70,7 +75,7 @@ export function Questions() {
   return (
     <div className="flex flex-col gap-y-8">
       {questionList
-        .filter(({ id }) => activeQuestionIndexes.includes(id))
+        .slice(0, amountOfQuestionsToShow)
         .map(({ id, question, points }, index) => (
           <div
             key={id}
@@ -82,9 +87,7 @@ export function Questions() {
               question={question}
               index={index}
               id={id}
-              allQuestionsAnswered={
-                activeQuestionIndexes.length - 1 === questionList.length
-              }
+              allQuestionsAnswered={isSuccess || isError || isPending}
             />
           </div>
         ))}

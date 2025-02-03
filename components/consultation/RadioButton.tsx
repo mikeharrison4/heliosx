@@ -23,7 +23,7 @@ export function RadioButton({
       />
       <label
         htmlFor={`${id}-${value}`}
-        className={`${disabled ? "cursor-not-allowed" : "cursor-pointer"} border border-gray-200 px-3 py-2 flex w-[50px] justify-center items-center font-mono peer-checked:bg-primary-yellow`}
+        className={`${disabled ? "cursor-not-allowed" : "cursor-pointer"} border border-gray-200 px-3 py-2 flex w-[50px] justify-center items-center font-mono peer-checked:bg-primary-yellow peer-focus:outline-none peer-focus:border-blue-700`}
       >
         {value}
       </label>
