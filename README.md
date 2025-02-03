@@ -1,6 +1,11 @@
 ## Run the application locally
 
-First, run the development server: (**Please use Node version 18.18 or higher**)
+First, install the packages needed to run the application
+```bash
+npm install
+```
+
+Then run the development server: (**Please use Node version 18.18 or higher**)
 
 ```bash
 npm run dev
