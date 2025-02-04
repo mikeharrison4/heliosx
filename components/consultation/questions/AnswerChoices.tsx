@@ -5,7 +5,12 @@ import { RadioButton } from "@/components/consultation/RadioButton";
 import type { AnswerChoices as AnswerChoicesType } from "@/components/consultation/questions/types";
 
 type AnswerChoicesProps = {
-  onChange: (index: number, question: string, value: AnswerChoicesType) => void;
+  onChange: (
+    index: number,
+    id: number,
+    question: string,
+    value: AnswerChoicesType,
+  ) => void;
   question: string;
   index: number;
   id: number;
@@ -28,7 +33,7 @@ export function AnswerChoices({
           id={`${id}`}
           name={`${id}-radio-buttons`}
           value={value}
-          onChange={() => onChange(index, question, value)}
+          onChange={() => onChange(index, id, question, value)}
         />
       ))}
     </div>

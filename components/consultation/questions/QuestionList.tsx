@@ -9,7 +9,7 @@ import { Feedback } from "@/components/consultation/Feedback";
 
 import type {
   AnswerChoices as AnswerChoicesType,
-  Answers,
+  Answer,
 } from "@/components/consultation/questions/types";
 
 const questionList = [
@@ -51,7 +51,7 @@ const questionList = [
 
 export function Questions() {
   const [amountOfQuestionsToShow, setAmountOfQuestionsToShow] = useState(1);
-  const [answers, setAnswers] = useState<Array<Answers>>([]);
+  const [answers, setAnswers] = useState<Array<Answer>>([]);
 
   const { submitAnswers, isSuccess, isError, isPending } =
     useSubmitConsultationAnswers({
@@ -60,13 +60,30 @@ export function Questions() {
 
   function handleOnAnswer(
     index: number,
+    id: number,
     question: string,
     answer: AnswerChoicesType,
   ) {
     if (index + 1 === amountOfQuestionsToShow) {
       setAmountOfQuestionsToShow((prev) => prev + 1);
     }
-    setAnswers((prev) => [...prev, { question, answer }]);
+
+    const answerIndex = answers.findIndex((item) => item.id === id);
+    const hasQuestionAlreadyBeenAnswered = answerIndex > -1;
+    if (hasQuestionAlreadyBeenAnswered) {
+      setAnswers(
+        answers.map((item) => {
+          if (item.id === id) {
+            return { ...item, answer };
+          } else {
+            return item;
+          }
+        }),
+      );
+    } else {
+      setAnswers((prev) => [...prev, { id, question, answer }]);
+    }
+
     if (amountOfQuestionsToShow === questionList.length) {
       submitAnswers();
     }

@@ -1,12 +1,12 @@
 import { useMutation } from "@tanstack/react-query";
 import { submitConsultationAnswers } from "@/actions/submit-consultation-answers/submitConsultationAnswers";
 
-import type { Answers } from "@/components/consultation/questions/types";
+import type { Answer } from "@/components/consultation/questions/types";
 
 export function useSubmitConsultationAnswers({
   answers,
 }: {
-  answers: Array<Answers>;
+  answers: Array<Answer>;
 }) {
   const { mutate: submitAnswers, ...rest } = useMutation({
     mutationFn: () => {
